@@ -1,0 +1,436 @@
+{
+  "Archeology": {
+    "Aldarian": {
+      "Aldarian Gauntlet": "Rare",
+      "Aldarian Sword": "Uncommon",
+      "Aldarian War Banner": "Rare",
+      "Family Crest Pendant": "Uncommon",
+      "Lost Crown of Aldaria": "Legendary"
+    },
+    "Caldosian": {
+      "Caldosian Breastplate": "Rare",
+      "Caldosian Drinking Horn": "Rare",
+      "Caldosian Emperor Bust": "Uncommon",
+      "Caldosian Sword": "Uncommon",
+      "Statuette of Caldarus": "Legendary"
+    },
+    "Alda": {
+      "Alda Bronze Sword": "Rare",
+      "Alda Clay Pot": "Uncommon",
+      "Alda Feather Pendant": "Uncommon",
+      "Alda Gem Bracelet": "Legendary",
+      "Alda Mural Tablet": "Rare"
+    },
+    "Ancient" : {
+      "Ancient Crystal Goblet": "Rare",
+      "Ancient Gold Coin": "Uncommon",
+      "Ancient Horn Circlet": "Rare",
+      "Ancient Royal Scepter": "Legendary",
+      "Ancient Stone Lantern": "Uncommon"
+    },
+    "Prehistoric": {
+      "Amber Trapped Insect": "Uncommon",
+      "Fossilized Egg": "Rare",
+      "Meteorite": "Legendary",
+      "Tiny Dinosaur Skeleton": "Rare",
+      "Trilobite Fossil": "Uncommon"
+    },
+    "Oopart": {
+      "Black Tablet": "Uncommon",
+      "Completely Wrong Map": "Uncommon",
+      "Muttering Cube": "Uncommon",
+      "Unknown Dragon Statuette": "Uncommon",
+      "Weightless Stone": "Uncommon"
+    },
+    "Aquatic": {
+      "Coin Lump": "Rare",
+      "Giant Fish Scale": "Uncommon",
+      "Rubber Fish": "Uncommon",
+      "Rusted Treasure Chest": "Rare",
+      "Water Sphere": "Rare"
+    },
+    "Sunken": {
+      "Criminal Confession": "Uncommon",
+      "Mermaid's Comb": "Uncommon",
+      "Rainbow Seaweed": "Uncommon",
+      "Rock with a Hole": "Uncommon",
+      "Rusted Shield": "Uncommon"
+    },
+    "Buried": {
+      "Diamond-backed Mirror": "Rare",
+      "Flint Arrowhead": "Uncommon",
+      "Obsidian Blade": "Rare",
+      "Shortcut Scroll": "Legendary",
+      "Stone Horse": "Uncommon"
+    },
+    "Upper Mines": {
+      "Miner's Helmet": "Rare",
+      "Miner's Pickaxe": "Common",
+      "Miner's Rucksack": "Uncommon",
+      "Miner's Slab": "Uncommon",
+      "Tin Lunchbox": "Uncommon"
+    },
+    "Tide Cavern": {
+      "Crab Statue": "Rare",
+      "Dense Water": "Uncommon",
+      "Starlight Coral": "Common",
+      "Stone Shell": "Common",
+      "Tidestone": "Uncommon"
+    },
+    "Deep Earth": {
+      "Earth-infused Stone": "Uncommon",
+      "Faceted Rock Gem": "Uncommon",
+      "Really Round Rock": "Common",
+      "Rock Statue": "Rare",
+      "Seriously Square Stone": "Uncommon"
+    },
+    "Ritual": {
+      "Ritual Beads": "Uncommon",
+      "Ritual Chalice": "Uncommon",
+      "Ritual Incense Burner": "Uncommon",
+      "Ritual Scepter": "Rare",
+      "Ritual Tablet": "Rare"
+    },
+    "Vintage Farm Tools": {
+      "Vintage Brush": "Rare",
+      "Vintage Cow Bell": "Legendary",
+      "Vintage Hammer": "Uncommon",
+      "Vintage Sickle": "Uncommon",
+      "Vintage Watering Can": "Uncommon"
+    },
+    "Metals Of Mistria": {
+      "Perfect Copper Ore": "Uncommon",
+      "Perfect Gold Ore": "Rare",
+      "Perfect Iron Ore": "Uncommon",
+      "Perfect Mistril Ore": "Rare",
+      "Perfect Silver Ore": "Uncommon"
+    },
+    "Gems Of Mistria": {
+      "Perfect Diamond": "Rare",
+      "Perfect Emerald": "Uncommon",
+      "Perfect Pink Diamond": "Rare",
+      "Perfect Ruby": "Rare",
+      "Perfect Sapphire": "Rare"
+    },
+    "Dig Site": {
+      "Clay": "Common",
+      "Peat": "Common",
+      "Shard Mass": "Common",
+      "Shards": "Common",
+      "Sod": "Common"
+    }
+  },
+  "Fish": {
+    "Multi-Season": {
+      "Koi": "Common",
+      "Pike": "Common",
+      "Pollock": "Common",
+      "Smallmouth Bass": "Common",
+      "Trout": "Common"
+    },
+    "Spring River": {
+      "Bluegill": "Common",
+      "Carp": "Common",
+      "Chub": "Common",
+      "Paddlefish": "Rare",
+      "Walleye": "Common"
+    },
+    "Sprint Pond": {
+      "Angel Fish": "Common",
+      "Barb": "Common",
+      "Brown Trout": "Common",
+      "Crucian Carp": "Common",
+      "Goldfish": "Rare"
+    },
+    "Spring Ocean": {
+      "Anchovy": "Common",
+      "Lobster": "Common",
+      "Mackerel": "Common",
+      "Ocean Sunfish": "Rare",
+      "Shrimp": "Common"
+    },
+    "Summer River": {
+      "Bream": "Common",
+      "Loach": "Common",
+      "Minnow": "Common",
+      "Sweetfish": "Common",
+      "Tarpon": "Rare"
+    },
+    "Summer Pond": {
+      "Brown Bullhead": "Common",
+      "Giant Koi": "Rare",
+      "Golden Shiner": "Common",
+      "Lake Chub": "Common",
+      "Sauger": "Common"
+    },
+    "Summer Ocean": {
+      "Char": "Common",
+      "Crab": "Common",
+      "Dart": "Common",
+      "Grouper": "Rare",
+      "Stingray": "Common"
+    },
+    "Fall River": {
+      "Grayling": "Common",
+      "Lamprey": "Common",
+      "Perch": "Common",
+      "Razorback": "Rare",
+      "Shad": "Common"
+    },
+    "Fall Pond": {
+      "Bluefish": "Common",
+      "Killifish": "Common",
+      "Rainbow Trout": "Common",
+      "Striped Bass": "Common",
+      "White Perch": "Rare"
+    },
+    "Fall Ocean": {
+      "Butterfish": "Common",
+      "Halibut": "Common",
+      "Mullet": "Common",
+      "Saury": "Common",
+      "Shark": "Rare"
+    },
+    "Winter River": {
+      "Bowfish": "Common",
+      "Dace": "Common",
+      "Freshwater Eel": "Common",
+      "Herring": "Common",
+      "Shadow Bass": "Rare"
+    },
+    "Winter Pond": {
+      "Alligator Gar": "Rare",
+      "Burbot": "Common",
+      "Flathead Catfish": "Common",
+      "Giant Tilapia": "Uncommon",
+      "Tilapia": "Common"
+    },
+    "Winter Ocean": {
+      "Horse Mackerel": "Common",
+      "King Crab": "Common",
+      "Oarfish": "Rare",
+      "Sand Lance": "Common",
+      "Sea Bass": "Common"
+    },
+    "Upper Mines": {
+      "Cave Eel": "Uncommon",
+      "Cave Shark": "Rare",
+      "Cave Shrimp": "Common",
+      "Rock Guppy": "Uncommon",
+      "Stone Loach": "Common"
+    },
+    "Tide Caverns": {
+      "Archerfish": "Uncommon",
+      "Mini-Whale Shark": "Rare",
+      "Sapphire Betta": "Common",
+      "Transparent Jellyfish": "Common",
+      "Water Balloon Fish": "Uncommon"
+    },
+    "Deep Earth": {
+      "Earth Eel": "Common",
+      "Emerald Horned Charger": "Rare",
+      "Pebble Minnow": "Common",
+      "Rockbiter": "Uncommon",
+      "Shardfin": "Uncommon"
+    },
+    "Legendary": {
+      "Cherry Fish": "Legendary",
+      "Leaf Fish": "Legendary",
+      "Lightning Fish": "Legendary",
+      "Snow Fish": "Legendary"
+    }
+  },
+  "Flora": {
+    "Spring Crop": [
+      "Cabbage",
+      "Cherry",
+      "Potato",
+      "Strawberry",
+      "Turnip"
+    ],
+    "Spring Flower": [
+      "Daffodil",
+      "Dandelion",
+      "Lilac",
+      "Snowdrop Anemone",
+      "Tulip"
+    ],
+    "Spring Forage": [
+      "Fennel",
+      "Fiddlehead",
+      "Morel Mushroom",
+      "Nettle",
+      "Wild Leek"
+    ],
+    "Summer Crop": [
+      "Chili Pepper",
+      "Corn",
+      "Cucumber",
+      "Tomato",
+      "Watermelon"
+    ],
+    "Summer Flower": [
+      "Catmint",
+      "Cosmos",
+      "Daisy",
+      "Iris",
+      "Marigold"
+    ],
+    "Summer Forage": [
+      "Basil",
+      "Dill",
+      "Oregano",
+      "Sage",
+      "Thyme"
+    ],
+    "Fall Crop": [
+      "Apple",
+      "Broccoli",
+      "Cranberry",
+      "Pumpkin",
+      "Sweet Potato"
+    ],
+    "Fall Flower": [
+      "Celosia",
+      "Chrysanthemum",
+      "Fog Orchid",
+      "Heather",
+      "Viola"
+    ],
+    "Fall Forage": [
+      "Chestnut",
+      "Garlic",
+      "Horseradish",
+      "Moon Fruit",
+      "Rosemary"
+    ],
+    "Winter Crop": [
+      "Beet",
+      "Cauliflower",
+      "Daikon Radish",
+      "Pomegranate",
+      "Snow Peas"
+    ],
+    "Winter Flower": [
+      "Crocus",
+      "Frost Lily",
+      "Jasmine",
+      "Poinsettia",
+      "Snapdragon"
+    ],
+    "Winter Forage": [
+      "Burdock Root",
+      "Holly",
+      "Oyster Mushroom",
+      "Pineshroom",
+      "Rose Hip"
+    ],
+    "Upper Mines": [
+      "Narrows Moss",
+      "Red Toadstool",
+      "Shadow Flower",
+      "Sweetroot",
+      "Upper Mines Mushroom"
+    ],
+    "Tide Caverns": [
+      "Jade Dulse",
+      "Mines Mussels",
+      "Sea Grapes",
+      "Tide Lettuce",
+      "Underseaweed"
+    ],
+    "Deep Earth": [
+      "Crystal Berries",
+      "Crystal Rose",
+      "Earthshroom",
+      "Rockroot",
+      "Shale Grass"
+    ]
+  },
+  "Insects": {
+    "Multi-Season": {
+      "Ant": "Common",
+      "Bumblebee": "Common",
+      "Fuzzy Moth": "Common",
+      "Hummingbird Hawk Moth": "Rare",
+      "Praying Mantis": "Common"
+    },
+    "Spring": {
+      "Butterfly": "Common",
+      "Caterpillar": "Common",
+      "Ladybug": "Common",
+      "Luna Moth": "Rare",
+      "Roly Poly": "Uncommon"
+    },
+    "Summer": {
+      "Cicada": "Common",
+      "Cricket": "Common",
+      "Dragonfly": "Uncommon",
+      "Firefly": "Common",
+      "Sand Bug": "Common"
+    },
+    "Fall": {
+      "Cicada Nymph": "Common",
+      "Inchworm": "Common",
+      "Monarch Butterfly": "Common",
+      "Tiger Swallowtail Butterfly": "Uncommon",
+      "Walking Leaf": "Uncommon"
+    },
+    "Winter": {
+      "Brightbulb Moth": "Common",
+      "Crystal Caterpillar": "Rare",
+      "Frost Flutter Butterfly": "Common",
+      "Walking Stick": "Uncommon",
+      "Winterpillar": "Common"
+    },
+    "Rare": {
+      "Jewel Beetle": "Rare",
+      "Lightning Dragonfly": "Rare",
+      "Magma Beetle": "Rare",
+      "Mistmoth": "Rare",
+      "Orchid Mantis": "Rare"
+    },
+    "Legendary": {
+      "Fairy Bee": "Legendary",
+      "Flower Crown Beetle": "Legendary",
+      "Snowball Beetle": "Legendary",
+      "Speedy Snail": "Legendary",
+      "Strobe Firefly": "Legendary"
+    },
+    "Upper Mines": {
+      "Copper Nugget Beetle": "Uncommon",
+      "Lantern Moth": "Common",
+      "Mine Cricket": "Rare",
+      "Tunnel Millipede": "Common",
+      "Worm": "Common"
+    },
+    "Tide Caverns": {
+      "Coral Mantis": "Uncommon",
+      "Hermit Snail": "Uncommon",
+      "Puddle Spider": "Common",
+      "Sea Scarab": "Rare",
+      "Waterfly": "Common"
+    },
+    "Deep Earth": {
+      "Crystal Wing Moth": "Rare",
+      "Crystalline Cricket": "Uncommon",
+      "Deep Earthworm": "Common",
+      "Gem Shard Catterpillar": "Uncommon",
+      "Rock Roach": "Common"
+    },
+    "Grass": {
+      "Grasshopper": "Common",
+      "Icehopper": "Common",
+      "Leafhopper": "Common",
+      "Petalhopper": "Common",
+      "Strawhopper": "Common"
+    },
+    "Beach": {
+      "Beach Hopper": "Common",
+      "Hermit Crab": "Common",
+      "Relic Crab": "Uncommon",
+      "Surf Beetle": "Common",
+      "Waterbug": "Common"
+    }
+  }
+}
