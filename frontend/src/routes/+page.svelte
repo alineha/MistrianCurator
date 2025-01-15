@@ -73,7 +73,7 @@
   <main>
       <center><div class="title">
         <img class="leftBorder" src={borderTitle} alt="Border Left">
-        <square class="title">Mistrian Curator</square>
+        <a href="/"><square class="title">Mistrian Curator</square></a>
         <img class="rightBorder" src={borderTitle} alt="Border Left">
       </div></center>
   <center>
@@ -129,7 +129,7 @@
         </tr>
       </tbody>
       </table>
-      <h3>Submit your <a href="https://www.shecodes.io/">gamedata</a> file below to start:</h3>
+      <h2>Submit your <a href="/gamedata">gamedata</a> file below to start:</h2>
       <input id="fileUpload" type="file" bind:files>
       {#if dataFile && files[0]}
           <p>

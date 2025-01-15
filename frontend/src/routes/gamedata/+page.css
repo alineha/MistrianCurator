@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'Proggy';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/static/fonts/ProggyClean.woff2');
+  src: local(''), url('/static/fonts/ProggyClean.woff2') format('woff2'),
+                  url('/static/fonts/ProggyClean.ttf') format('truetype'),
+                  url('/static/fonts/ProggyClean.woff') format('woff'),
+}
+
+:root {
+  font-family: 'Proggy';  
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #6a5f69;
+
+  font-synthesis: none;
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.logo {
+  height: 10em;
+  padding: 0em 2em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo.archeo:hover {
+  filter: drop-shadow(0 0 1em #d0c3beaa);
+}
+.logo.fish:hover {
+  filter: drop-shadow(0 0 1em #bac8dbaa);
+}
+.logo.flora:hover {
+  filter: drop-shadow(0 0 1em #b6cdcfaa);
+}
+.logo.insects:hover {
+  filter: drop-shadow(0 0 1em #d0bdd9aa);
+}
+table.museum {
+text-align: center;
+}
+table.museum td {
+  padding: 0px 0px;
+}
+h2.wing {
+  display:grid;
+  text-align: center;
+  margin-top: 0;
+  grid-column: 1;
+  grid-row: 1;
+}
+square.title {
+  font-size: 3.2em;
+  background-color: #d0c2c7;
+  border-radius: 15px 15px 15px 15px;
+  border: 3px outset #554751;
+  color: #010101;
+  text-shadow: 2px 2px 2px #b9a7a3;
+  padding: .3em;
+  padding-left: .5em;
+  padding-right: .4em;
+  }
+div.title{
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+}
+img.rightBorder {
+  transform: scalex(-100%) scale(130%);
+  margin-left: -2px;
+}
+img.leftBorder {
+  transform: scale(130%);
+  margin-right: -2px;
+}
+
+.container_row{
+  display: grid;
+}
+
+.wingLayer{
+  display:grid;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self:center;
+  padding-bottom:1em;
+  margin-top: 0;
+}
