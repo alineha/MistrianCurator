@@ -8,14 +8,10 @@
     import floraLogo from '../../static/flora.webp'
     import insectsLogo from '../../static/insects.webp'
     import borderTitle from '../../static/titleborder.png'
-    import {onMount} from 'svelte';
     import {Circle} from 'svelte-loading-spinners';
+    import { writable } from 'svelte/store'
 
-    import Cookies from "cookies-ts"
- 
-    const cookies = new Cookies()
 
-    
     function swapDisplay(percTextId: string, circleDivId: string) {
       var txt = document.getElementById(percTextId);
       var div = document.getElementById(circleDivId);
@@ -27,6 +23,7 @@
     };
     
     import type { PageData } from './$types';
+    import { json } from '@sveltejs/kit';
     
     let { data }: { data: PageData } = $props();
     
@@ -37,6 +34,7 @@
     
     let files;
     let dataFile = null;
+    let museuminfo;
     
     async function upload() {
         const formData = new FormData();
@@ -44,13 +42,21 @@
         const upload = fetch('http://localhost:8000/import', {
             method: 'POST',
             body: formData
-        }).then((response) => {console.log(response.headers.cookie);return response.headers}).then((result) => {
-            console.log('Success:', result);
+        }).then((response) => response.text()).then((result) => {
+            museuminfo = JSON.parse(result);
+            let keys = Object.keys(museuminfo)  // ["foo", "batz"]
+            let values = Object.values(museuminfo)  // ["bar", "boink"]
+            let entries = Object.entries(museuminfo)
+            keys.map((key, index) => {
+              const value = values[index]
+              console.log(key);
+              console.log(value);
+            })
+
         })
                 .catch((error) => {
                     console.error('Error:', error);
                 });
-
 
         const responseArch = await fetch(
             'http://127.0.0.1:8000/wing/percentage?wing=archeology',
