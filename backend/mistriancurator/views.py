@@ -45,4 +45,4 @@ def percentage(request):
                 if key2.lower() in museuminfo.keys() and museuminfo[key2.lower()] == "YES":
                     print("AAAAAAAAAAAAAAAAA")
                     obtained += 1
-    return HttpResponse(obtained/total if total>0 else 0)
+    return HttpResponse(round(obtained/total, 2) if total>0 else 0)

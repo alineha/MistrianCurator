@@ -129,6 +129,7 @@
         </tr>
       </tbody>
       </table>
+      <h3>Submit your <a href="https://www.shecodes.io/">gamedata</a> file below to start:</h3>
       <input id="fileUpload" type="file" bind:files>
       {#if dataFile && files[0]}
           <p>
