@@ -22,7 +22,7 @@ def import_data(request):
                 else:
                     museuminfo[itemname] = "NO"
                     response.set_cookie("".join(key.split("_")[2:]), 'NO')
-        return JsonResponse(museuminfo)
+        return response
     return HttpResponse("Failure")
 
 @csrf_exempt
