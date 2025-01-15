@@ -11,8 +11,11 @@
     import {onMount} from 'svelte';
     import {Circle} from 'svelte-loading-spinners';
 
-    let archpercentage = $state(-1);
+    import Cookies from "cookies-ts"
+ 
+    const cookies = new Cookies()
 
+    
     function swapDisplay(percTextId: string, circleDivId: string) {
       var txt = document.getElementById(percTextId);
       var div = document.getElementById(circleDivId);
@@ -22,17 +25,42 @@
         div.style.display = 'none';
       }
     };
+    
+    import type { PageData } from './$types';
+    
+    let { data }: { data: PageData } = $props();
+    
+    let archpercentage = $state(-1);
+    let fishpercentage = $state(-1);
+    let florapercentage = $state(-1);
+    let insectspercentage = $state(-1);
+    
+    let files;
+    let dataFile = null;
+    
+    async function upload() {
+        const formData = new FormData();
+        formData.append('gamedata', files[0]);
+        const upload = fetch('http://localhost:8000/import', {
+            method: 'POST',
+            body: formData
+        }).then((response) => {console.log(response.headers.cookie);return response.headers}).then((result) => {
+            console.log('Success:', result);
+        })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
 
-    onMount(async () => {
-      const response = await fetch(
+
+        const responseArch = await fetch(
             'http://127.0.0.1:8000/wing/percentage?wing=archeology',
             {
                 method: 'GET'
             }
         );
-        if(response.ok)
+        if(responseArch.ok)
         {
-          const data = await response.json();
+          const data = await responseArch.json();
           archpercentage = parseFloat(data)*100;
           swapDisplay('archperc', 'archcircle');
         }
@@ -40,40 +68,16 @@
         {
           archpercentage = -1
         }
-    });
-  
-    let insectspercentage = $state(-1);
-  
-    onMount(async () => {
-      const response = await fetch(
-            'http://127.0.0.1:8000/wing/percentage?wing=insects',
-            {
-                method: 'GET'
-            }
-        );
-        if(response.ok)
-        {
-          const data = await response.json();
-          insectspercentage = parseFloat(data)*100;
-          swapDisplay('insectsperc', 'insectscircle');
-        }
-        else
-        {
-          insectspercentage = -1
-        }
-    });
-    let fishpercentage = $state(-1);
-  
-    onMount(async () => {
-      const response = await fetch(
+                
+        const responseFish = await fetch(
             'http://127.0.0.1:8000/wing/percentage?wing=fish',
             {
                 method: 'GET'
             }
         );
-        if(response.ok)
+        if(responseFish.ok)
         {
-          const data = await response.json();
+          const data = await responseFish.json();
           fishpercentage = parseFloat(data)*100;
           swapDisplay('fishperc', 'fishcircle');
         }
@@ -81,19 +85,16 @@
         {
           fishpercentage = -1
         }
-    });
-    let florapercentage = $state(-1);
-  
-    onMount(async () => {
-      const response = await fetch(
+
+        const responseFlora = await fetch(
             'http://127.0.0.1:8000/wing/percentage?wing=flora',
             {
                 method: 'GET'
             }
         );
-        if(response.ok)
+        if(responseFlora.ok)
         {
-          const data = await response.json();
+          const data = await responseFlora.json();
           florapercentage = parseFloat(data)*100;
           swapDisplay('floraperc', 'floracircle');
         }
@@ -101,23 +102,23 @@
         {
           florapercentage = -1
         }
-    });
 
-    let files = $state();
-    let dataFile = null;
-
-    function upload() {
-        const formData = new FormData();
-        formData.append('gamedata', files[0]);
-        const upload = fetch('http://localhost:8000/import', {
-            method: 'POST',
-            body: formData,
-        }).then((response) => { console.log(response.body);return response.json()}).then((result) => {
-            console.log('Success:', result);
-        })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+        const responseInsects = await fetch(
+            'http://127.0.0.1:8000/wing/percentage?wing=insects',
+            {
+                method: 'GET'
+            }
+        );
+        if(responseInsects.ok)
+        {
+          const data = await responseInsects.json();
+          insectspercentage = parseFloat(data)*100;
+          swapDisplay('insectsperc', 'insectscircle');
+        }
+        else
+        {
+          insectspercentage = -1
+        }
     }
   </script>
   
@@ -181,12 +182,17 @@
       </tbody>
       </table>
       <input id="fileUpload" type="file" bind:files>
+
       {#if dataFile && files[0]}
           <p>
               {files[0].name}
           </p>
       {/if}
+
+      
       <button onclick={upload}>Submit</button>
+      <h1>{data.post.title}</h1>
+<div>{@html data.post.content}</div>
     </center>
   </main>
   
