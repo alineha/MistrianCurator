@@ -3,7 +3,6 @@
 </style>
 
 <script lang="ts">
-    import { text } from '@sveltejs/kit';
     import archeologyLogo from '../../static/archeology.webp'
     import fishLogo from '../../static/fish.webp'
     import floraLogo from '../../static/flora.webp'
@@ -11,7 +10,7 @@
     import borderTitle from '../../static/titleborder.png'
     import {onMount} from 'svelte';
     import {Circle} from 'svelte-loading-spinners';
-  
+
     let archpercentage = $state(-1);
 
     function swapDisplay(percTextId: string, circleDivId: string) {
@@ -23,7 +22,7 @@
         div.style.display = 'none';
       }
     };
-  
+
     onMount(async () => {
       const response = await fetch(
             'http://127.0.0.1:8000/wing/percentage?wing=archeology',
@@ -103,6 +102,23 @@
           florapercentage = -1
         }
     });
+
+    let files = $state();
+    let dataFile = null;
+
+    function upload() {
+        const formData = new FormData();
+        formData.append('gamedata', files[0]);
+        const upload = fetch('http://localhost:8000/import', {
+            method: 'POST',
+            body: formData,
+        }).then((response) => { console.log(response.body);return response.json()}).then((result) => {
+            console.log('Success:', result);
+        })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+    }
   </script>
   
   <main>
@@ -164,6 +180,13 @@
         </tr>
       </tbody>
       </table>
+      <input id="fileUpload" type="file" bind:files>
+      {#if dataFile && files[0]}
+          <p>
+              {files[0].name}
+          </p>
+      {/if}
+      <button onclick={upload}>Submit</button>
     </center>
   </main>
   

@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 import json
+from django.views.decorators.csrf import csrf_exempt
 from pathlib import Path
 
+@csrf_exempt
 def import_data(request):
     if request.method == 'POST' and request.FILES['gamedata']:
         response = HttpResponse("Success")
@@ -23,6 +25,7 @@ def import_data(request):
         return response
     return HttpResponse("Failure")
 
+@csrf_exempt
 def percentage(request):
     if request.method == 'GET' and (request.GET.get("wing").lower() == "archeology"
                                     or request.GET.get("wing").lower() == "fish"
