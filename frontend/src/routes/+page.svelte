@@ -3,14 +3,26 @@
 </style>
 
 <script lang="ts">
+    import { text } from '@sveltejs/kit';
     import archeologyLogo from '../../static/archeology.webp'
     import fishLogo from '../../static/fish.webp'
     import floraLogo from '../../static/flora.webp'
     import insectsLogo from '../../static/insects.webp'
     import borderTitle from '../../static/titleborder.png'
     import {onMount} from 'svelte';
+    import {Circle} from 'svelte-loading-spinners';
   
-    let archpercentage = $state(11);
+    let archpercentage = $state(-1);
+
+    function swapDisplay(percTextId: string, circleDivId: string) {
+      var txt = document.getElementById(percTextId);
+      var div = document.getElementById(circleDivId);
+      if (txt && div)
+      {
+        txt.style.display = 'block';
+        div.style.display = 'none';
+      }
+    };
   
     onMount(async () => {
       const response = await fetch(
@@ -23,6 +35,7 @@
         {
           const data = await response.json();
           archpercentage = parseFloat(data)*100;
+          swapDisplay('archperc', 'archcircle');
         }
         else
         {
@@ -30,7 +43,7 @@
         }
     });
   
-    let insectspercentage = $state(11);
+    let insectspercentage = $state(-1);
   
     onMount(async () => {
       const response = await fetch(
@@ -43,13 +56,14 @@
         {
           const data = await response.json();
           insectspercentage = parseFloat(data)*100;
+          swapDisplay('insectsperc', 'insectscircle');
         }
         else
         {
           insectspercentage = -1
         }
     });
-    let fishpercentage = $state(11);
+    let fishpercentage = $state(-1);
   
     onMount(async () => {
       const response = await fetch(
@@ -62,13 +76,14 @@
         {
           const data = await response.json();
           fishpercentage = parseFloat(data)*100;
+          swapDisplay('fishperc', 'fishcircle');
         }
         else
         {
           fishpercentage = -1
         }
     });
-    let florapercentage = $state(11);
+    let florapercentage = $state(-1);
   
     onMount(async () => {
       const response = await fetch(
@@ -81,6 +96,7 @@
         {
           const data = await response.json();
           florapercentage = parseFloat(data)*100;
+          swapDisplay('floraperc', 'floracircle');
         }
         else
         {
@@ -103,13 +119,23 @@
             <a href="https://vite.dev" target="_blank" rel="noreferrer">
               <img src={archeologyLogo} class="logo archeo" alt="Vite Logo" />
             </a>
-            <h2 class="wing">{archpercentage}%</h2>
+            <div class="container_row">
+              <h2 id="archperc" class="wing" style="display:none">{archpercentage}%</h2>
+              <div class="wingLayer" id="archcircle" style="display:block">
+                <Circle size="30" color="#FFFFFF" unit="px" duration="1s" />
+              </div>
+            </div>
           </td>
           <td>
             <a href="https://svelte.dev" target="_blank" rel="noreferrer">
               <img src={fishLogo} class="logo fish" alt="Svelte Logo" />
             </a>
-            <h2 class="wing">{fishpercentage}%</h2>
+            <div class="container_row">
+              <h2 id="fishperc" class="wing" style="display:none">{fishpercentage}%</h2>
+              <div class="wingLayer" id="fishcircle" style="display:block">
+                <Circle size="30" color="#FFFFFF" unit="px" duration="1s" />
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
@@ -117,13 +143,23 @@
             <a href="https://svelte.dev" target="_blank" rel="noreferrer">
               <img src={floraLogo} class="logo flora" alt="Svelte Logo" />
             </a>
-            <h2 class="wing">{florapercentage}%</h2>
+            <div class="container_row">
+              <h2 id="floraperc" class="wing" style="display:none">{florapercentage}%</h2>
+              <div class="wingLayer" id="floracircle" style="display:block">
+                <Circle size="30" color="#FFFFFF" unit="px" duration="1s" />
+              </div>
+            </div>
           </td>
           <td>
             <a href="https://svelte.dev" target="_blank" rel="noreferrer">
               <img src={insectsLogo} class="logo insects" alt="Svelte Logo" />
             </a>
-            <h2 class="wing">{insectspercentage}%</h2>
+            <div class="container_row">
+              <h2 id="insectsperc" class="wing" style="display:none">{insectspercentage}%</h2>
+              <div class="wingLayer" id="insectscircle" style="display:block">
+                <Circle size="30" color="#FFFFFF" unit="px" duration="1s" />
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>

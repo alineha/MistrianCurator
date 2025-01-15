@@ -69,9 +69,11 @@ table.museum td {
   padding: 0px 0px;
 }
 h2.wing {
+  display:grid;
   text-align: center;
-  padding-bottom: 1em;
   margin-top: 0;
+  grid-column: 1;
+  grid-row: 1;
 }
 square.title {
   font-size: 3.2em;
@@ -95,4 +97,17 @@ img.rightBorder {
 img.leftBorder {
   transform: scale(130%);
   margin-right: -2px;
+}
+
+.container_row{
+  display: grid;
+}
+
+.wingLayer{
+  display:grid;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self:center;
+  padding-bottom:1em;
+  margin-top: 0;
 }
