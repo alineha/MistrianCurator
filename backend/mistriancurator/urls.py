@@ -21,7 +21,9 @@ from .views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('import', import_data),
-    path('wing/percentage', percentage)
+    path('wing/percentage', percentage),
+    path('wing/bundles', bundles),
+    path('wing/bundles/items', bundleItems)
 ]
 
 

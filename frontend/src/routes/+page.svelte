@@ -3,12 +3,16 @@
 </style>
 
 <script lang="ts">
+    import { onMount } from 'svelte';
     import archeologyLogo from '../../static/archeology.webp'
     import fishLogo from '../../static/fish.webp'
     import floraLogo from '../../static/flora.webp'
     import insectsLogo from '../../static/insects.webp'
     import borderTitle from '../../static/titleborder.png'
     import {Circle} from 'svelte-loading-spinners'; 
+    import type { Writable } from 'svelte/store';
+    import { writable, get } from 'svelte/store'
+
     
     function swapDisplay(percTextId: string, circleDivId: string) {
       var txt = document.getElementById(percTextId);
@@ -25,7 +29,7 @@
     categories.forEach((category) => {
       categoriesPercentages[category] = -1;
     });
-    let files;
+    let files: FileList | null = null;
     let dataFile = null;
 
     async function getSetPercentage(category: string, museumInfo: string) {
@@ -36,8 +40,6 @@
             body: JSON.stringify(museumInfo)
         }
       );
-
-      console.log(category)
       
       if (response.ok) {
         const data = await response.json();
@@ -49,7 +51,29 @@
       return {}; // empty json
     }
 
-    async function upload() {
+    let museuminfo;
+    
+    const storedValue = typeof window !== 'undefined' ? localStorage.getItem('museuminfo2') : null;
+    const store = writable(storedValue ? JSON.parse(storedValue) : null);
+    
+    store.subscribe((value) => {
+      if (value !== null) {
+        localStorage.setItem("museuminfo2", JSON.stringify(value));
+      }
+    });
+    
+    export const museuminfo2 = $store;
+
+    onMount(async () => {
+      if (museuminfo2 != null){
+      await getSetPercentage(categories[0], museuminfo2);
+      await getSetPercentage(categories[1], museuminfo2);
+      await getSetPercentage(categories[2], museuminfo2);
+      await getSetPercentage(categories[3], museuminfo2);
+    }
+	  });
+  
+  async function upload() {
         const formData = new FormData();
         formData.append('gamedata', files[0]);
         
@@ -57,8 +81,7 @@
             method: 'POST',
             body: formData
         });
-        let museuminfo = await response.json();
-  
+        museuminfo = await response.json();
 
         await getSetPercentage(categories[0], museuminfo);
         await getSetPercentage(categories[1], museuminfo);
@@ -81,7 +104,7 @@
       <tbody>
         <tr>
           <td>
-            <a href="https://vite.dev" target="_blank" rel="noreferrer">
+            <a href="/archeology">
               <img src={archeologyLogo} class="logo archeo" alt="Vite Logo" />
             </a>
             <div class="container_row">
@@ -92,7 +115,7 @@
             </div>
           </td>
           <td>
-            <a href="https://svelte.dev" target="_blank" rel="noreferrer">
+            <a href="/fish">
               <img src={fishLogo} class="logo fish" alt="Svelte Logo" />
             </a>
             <div class="container_row">
@@ -105,7 +128,7 @@
         </tr>
         <tr>
           <td>
-            <a href="https://svelte.dev" target="_blank" rel="noreferrer">
+            <a href="/flora">
               <img src={floraLogo} class="logo flora" alt="Svelte Logo" />
             </a>
             <div class="container_row">
@@ -116,7 +139,7 @@
             </div>
           </td>
           <td>
-            <a href="https://svelte.dev" target="_blank" rel="noreferrer">
+            <a href="/insects">
               <img src={insectsLogo} class="logo insects" alt="Svelte Logo" />
             </a>
             <div class="container_row">

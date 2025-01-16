@@ -36,6 +36,9 @@ def percentage(request):
             museuminfosorted = json.load(f)
         jsoninfo = request.body.decode('utf-8')
         museuminfo = json.loads(jsoninfo)
+        print(museuminfo)
+        if (museuminfo == None):
+            return HttpResponse(400)
 
         for key in museuminfosorted[request.GET.get("wing").capitalize()]:
             print(key)
@@ -43,6 +46,31 @@ def percentage(request):
                 total += 1
                 print(key2)
                 if key2.lower() in museuminfo.keys() and museuminfo[key2.lower()] == "YES":
-                    print("AAAAAAAAAAAAAAAAA")
                     obtained += 1
     return HttpResponse(round(obtained/total, 2) if total>0 else 0)
+
+@csrf_exempt
+def bundles(request):
+    if request.method == 'GET' and (request.GET.get("wing", "").lower() == "archeology"
+                                    or request.GET.get("wing", "").lower() == "fish"
+                                    or request.GET.get("wing", "").lower() == "flora"
+                                    or request.GET.get("wing", "").lower() == "insects"):
+        p = Path(__file__).with_name('museuminfosorted.json')
+        with p.open('r') as f:
+            museuminfosorted = json.load(f)
+        return JsonResponse(list(museuminfosorted[request.GET.get("wing").capitalize()].keys()), safe=False)
+    return HttpResponse(400)
+    
+@csrf_exempt
+def bundleItems(request):
+    if request.method == 'GET' and (request.GET.get("wing", "").lower() == "archeology"
+                                    or request.GET.get("wing", "").lower() == "fish"
+                                    or request.GET.get("wing", "").lower() == "flora"
+                                    or request.GET.get("wing", "").lower() == "insects"):
+        p = Path(__file__).with_name('museuminfosorted.json')
+        with p.open('r') as f:
+            museuminfosorted = json.load(f)
+        bundle = " ".join(x.capitalize() for x in request.GET.get("bundle","").split(" "))
+        if bundle in list(museuminfosorted[request.GET.get("wing").capitalize()].keys()):
+            return JsonResponse(list(museuminfosorted[request.GET.get("wing").capitalize()][bundle]), safe=False)
+    return HttpResponse(400)
