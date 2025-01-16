@@ -61,11 +61,15 @@
         let museum = localStorage.getItem("museuminfo2");
         if(museum != null)
         {
-            console.log("AAAAAA");
+            console.log('penis1')
             let museumNotJson = JSON.parse(museum);
     
             for (var bundle2 in items)
             {
+
+                console.log('test')
+                console.log(items)
+                //console.log(items[bundle2]);
                 for (var item of items[bundle2]){
                     let itemLowercase = item.toLowerCase();
                     if (museumNotJson[itemLowercase] == "YES"){

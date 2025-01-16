@@ -64,8 +64,11 @@
             console.log("AAAAAA");
             let museumNotJson = JSON.parse(museum);
     
+            console.log(items)
+
             for (var bundle2 in items)
             {
+                console.log(bundle2)
                 for (var item of items[bundle2]){
                     let itemLowercase = item.toLowerCase();
                     if (museumNotJson[itemLowercase] == "YES"){
