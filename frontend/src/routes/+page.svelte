@@ -53,23 +53,22 @@
 
     let museuminfo;
     
-    const storedValue = typeof window !== 'undefined' ? localStorage.getItem('museuminfo2') : null;
+    const storedValue = typeof window !== 'undefined' ? localStorage.getItem('museum') : null;
     const store = writable(storedValue ? JSON.parse(storedValue) : null);
+    let museum = $store;
     
     store.subscribe((value) => {
       if (value !== null) {
-        localStorage.setItem("museuminfo2", JSON.stringify(value));
+        localStorage.setItem("museum", JSON.stringify(value));
       }
     });
-    
-    export const museuminfo2 = $store;
-
+  
     onMount(async () => {
-      if (museuminfo2 != null){
-      await getSetPercentage(categories[0], museuminfo2);
-      await getSetPercentage(categories[1], museuminfo2);
-      await getSetPercentage(categories[2], museuminfo2);
-      await getSetPercentage(categories[3], museuminfo2);
+      if (museum != null){
+      await getSetPercentage(categories[0], museum);
+      await getSetPercentage(categories[1], museum);
+      await getSetPercentage(categories[2], museum);
+      await getSetPercentage(categories[3], museum);
     }
 	  });
   
@@ -82,6 +81,7 @@
             body: formData
         });
         museuminfo = await response.json();
+        localStorage.setItem("museum", JSON.stringify(museuminfo));
 
         await getSetPercentage(categories[0], museuminfo);
         await getSetPercentage(categories[1], museuminfo);

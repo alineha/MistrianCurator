@@ -5,9 +5,8 @@
 <script lang="ts">
     import borderTitle from '../../../static/titleborder.png'
     import {getBundleItems, getBundles} from '$lib/utils';
-    import {onMount} from 'svelte';
-    import {museuminfo2} from '$lib/stores';
-    
+    import {onMount} from 'svelte';    
+    import { writable } from 'svelte/store';
     
     let categories = ['archeology', 'fish', 'flora', 'insects'];
     var categoriesPercentages: { [id: string]: Number; } = {};
@@ -37,15 +36,39 @@
     export let bundlesNumber: number = 0;
     export let items: { [id: string] : string[]; } = {};
     export let itemsCheckbox: { [id: string] : boolean; } = {};
-    museuminfo2.subscribe(updateMuseumInfo);
-
+    const storedValue = typeof window !== 'undefined' ? localStorage.getItem('museum') : null;
+    const store = writable(storedValue ? JSON.parse(storedValue) : null);
+    let museum = $store;
     
-    function updateMuseumInfo(){
-        let museum = localStorage.getItem("museuminfo2");
-        if(museum != null)
+    store.subscribe(updatePercentage);
+    
+    function updatePercentage(){
+        let museuminfo = localStorage.getItem("museum");
+        if(museuminfo != null)
         {
-            console.log("AAAAAA");
-            getSetPercentage('archeology', museum);
+            getSetPercentage('archeology', museuminfo);
+        }
+    }
+
+    $: updateMuseumInfo(itemsCheckbox), itemsCheckbox;
+
+    function updateMuseumInfo(itemsCheckbox : { [id: string]: boolean }){
+        console.log("help");
+        let museuminfo = localStorage.getItem("museum");
+        if(museuminfo != null)
+        {
+            let itemsCheckboxString = JSON.parse(museuminfo);
+            for (var item in itemsCheckbox){
+                if (itemsCheckbox[item])
+                {
+                    itemsCheckboxString[item] = "YES";
+                }
+                else
+                {
+                    itemsCheckboxString[item] = "NO";
+                }
+            }
+            localStorage.setItem("museum", JSON.stringify(itemsCheckboxString));
         }
     }
     
@@ -59,11 +82,11 @@
             let itemsOfBundle = await getBundleItems("archeology", bundle);
             items[bundle] = itemsOfBundle;
         }
-        let museum = localStorage.getItem("museuminfo2");
-        if(museum != null)
+        let museuminfo = localStorage.getItem("museum");
+        if(museuminfo != null)
         {
-            console.log("AAAAAA");
-            let museumNotJson = JSON.parse(museum);
+            console.log(museuminfo);
+            let museumNotJson = JSON.parse(museuminfo);
     
             for (var bundle2 in items)
             {
