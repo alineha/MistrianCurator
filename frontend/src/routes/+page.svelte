@@ -24,6 +24,16 @@
       }
     };
 
+    function swapDisplayInverted(percTextId: string, circleDivId: string) {
+      var txt = document.getElementById(percTextId);
+      var div = document.getElementById(circleDivId);
+      if (txt && div)
+      {
+        txt.style.display = 'none';
+        div.style.display = 'block';
+      }
+    };
+
     let categories = ['archeology', 'fish', 'flora', 'insects'];
     var categoriesPercentages: { [id: string]: Number; } = {};
     categories.forEach((category) => {
@@ -89,7 +99,14 @@
         await getSetPercentage(categories[3], museuminfo);
       };
 
-      
+  async function clear() {
+        localStorage.clear();
+
+        swapDisplayInverted(`${categories[0]}perc`, `${categories[0]}circle`);
+        swapDisplayInverted(`${categories[1]}perc`, `${categories[1]}circle`);
+        swapDisplayInverted(`${categories[2]}perc`, `${categories[2]}circle`);
+        swapDisplayInverted(`${categories[3]}perc`, `${categories[3]}circle`);
+      };
     
   </script>
   
@@ -105,7 +122,7 @@
         <tr>
           <td>
             <a href="/archeology">
-              <img src={archeologyLogo} class="logo archeo" alt="Vite Logo" />
+              <img src={archeologyLogo} class="logo archeo" alt="Archeology Wing" />
             </a>
             <div class="container_row">
               <h2 id="archeologyperc" class="wing" style="display:none">{categoriesPercentages['archeology']}%</h2>
@@ -116,7 +133,7 @@
           </td>
           <td>
             <a href="/fish">
-              <img src={fishLogo} class="logo fish" alt="Svelte Logo" />
+              <img src={fishLogo} class="logo fish" alt="Fish Wing" />
             </a>
             <div class="container_row">
               <h2 id="fishperc" class="wing" style="display:none">{categoriesPercentages['fish']}%</h2>
@@ -129,7 +146,7 @@
         <tr>
           <td>
             <a href="/flora">
-              <img src={floraLogo} class="logo flora" alt="Svelte Logo" />
+              <img src={floraLogo} class="logo flora" alt="Flora Wing" />
             </a>
             <div class="container_row">
               <h2 id="floraperc" class="wing" style="display:none">{categoriesPercentages['flora']}%</h2>
@@ -140,7 +157,7 @@
           </td>
           <td>
             <a href="/insects">
-              <img src={insectsLogo} class="logo insects" alt="Svelte Logo" />
+              <img src={insectsLogo} class="logo insects" alt="Insects Wing" />
             </a>
             <div class="container_row">
               <h2 id="insectsperc" class="wing" style="display:none">{categoriesPercentages['insects']}%</h2>
@@ -160,6 +177,7 @@
           </p>
       {/if}
       <button onclick={upload}>Submit</button>
+      <div style="padding-top: 1em"><button onclick={clear}>Clear data</button></div>
     </center>
   </main>
   

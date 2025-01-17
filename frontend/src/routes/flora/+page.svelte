@@ -11,7 +11,7 @@
     let categories = ['archeology', 'fish', 'flora', 'insects'];
     var categoriesPercentages: { [id: string]: Number; } = {};
     categories.forEach((category) => {
-        categoriesPercentages[category] = -1;
+        categoriesPercentages[category] = 0;
     });
     
     async function getSetPercentage(category: string, museumInfo: string) {
@@ -103,6 +103,10 @@
                     }
                 }
             }
+        }
+        else
+        {
+            localStorage.setItem("museum", "{}");
         }
 
         isDataLoaded = true;
