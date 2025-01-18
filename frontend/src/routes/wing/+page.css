@@ -78,18 +78,18 @@
   .container {
     width:50%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: auto;
     grid-row-gap: .5em;
-    grid-column-gap: 1em;
+    grid-column-gap: 0em;
     margin: 0 auto;
+    padding-left:7em;
   }
   
   .container .item {
   }
 
   div.item {
-    column-count: 2;
   }
 
   input.checkbox {

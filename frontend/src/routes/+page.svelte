@@ -121,7 +121,7 @@
       <tbody>
         <tr>
           <td>
-            <a href="/archeology">
+            <a href="/wing?which=archeology">
               <img src={archeologyLogo} class="logo archeo" alt="Archeology Wing" />
             </a>
             <div class="container_row">
@@ -132,7 +132,7 @@
             </div>
           </td>
           <td>
-            <a href="/fish">
+            <a href="/wing?which=fish">
               <img src={fishLogo} class="logo fish" alt="Fish Wing" />
             </a>
             <div class="container_row">
@@ -145,7 +145,7 @@
         </tr>
         <tr>
           <td>
-            <a href="/flora">
+            <a href="/wing?which=flora">
               <img src={floraLogo} class="logo flora" alt="Flora Wing" />
             </a>
             <div class="container_row">
@@ -156,7 +156,7 @@
             </div>
           </td>
           <td>
-            <a href="/insects">
+            <a href="/wing?which=insects">
               <img src={insectsLogo} class="logo insects" alt="Insects Wing" />
             </a>
             <div class="container_row">

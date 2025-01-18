@@ -4,33 +4,13 @@
 
 <script lang="ts">
     import borderTitle from '../../../static/titleborder.png'
-    import {getBundleItems, getBundles} from '$lib/utils';
+    import {categoriesPercentages, getSetPercentage, getBundleItems, getBundles} from '$lib/utils';
     import {onMount} from 'svelte';    
     import { writable } from 'svelte/store';
-    
-    let categories = ['archeology', 'fish', 'flora', 'insects'];
-    var categoriesPercentages: { [id: string]: Number; } = {};
-    categories.forEach((category) => {
-        categoriesPercentages[category] = 0;
-    });
-    
-    async function getSetPercentage(category: string, museumInfo: string) {
-        const response = await fetch(
-            `http://127.0.0.1:8000/wing/percentage?wing=${category}`,
-            {
-                method: 'POST',
-                body: museumInfo
-            }
-        );
-        
-        if (response.ok) {
-            const data = await response.json();
-            categoriesPercentages[category] = parseFloat(data)*100;
-            return data; // json
-        }  
-        
-        return {}; // empty json
-    }
+    import { page } from '$app/state';
+
+    let currCat = page.url.searchParams.get('which')    
+    console.log(currCat)
     
     export let bundles: string[] = [];
     export let bundlesNumber: number = 0;
@@ -46,14 +26,13 @@
         let museuminfo = localStorage.getItem("museum");
         if(museuminfo != null)
         {
-            getSetPercentage('archeology', museuminfo);
+            getSetPercentage(currCat, museuminfo);
         }
     }
 
     $: updateMuseumInfo(itemsCheckbox), itemsCheckbox;
 
     function updateMuseumInfo(itemsCheckbox : { [id: string]: boolean }){
-        console.log("help");
         let museuminfo = localStorage.getItem("museum");
         if(museuminfo != null)
         {
@@ -72,20 +51,18 @@
         }
     }
     
-    
     let isDataLoaded = false;
     onMount(async () => {
-		bundles = await getBundles("archeology");
+		bundles = await getBundles(currCat);
         bundlesNumber = bundles.length-1;
         for (var bundle of bundles)
         {
-            let itemsOfBundle = await getBundleItems("archeology", bundle);
+            let itemsOfBundle = await getBundleItems(currCat, bundle);
             items[bundle] = itemsOfBundle;
         }
         let museuminfo = localStorage.getItem("museum");
         if(museuminfo != null)
         {
-            console.log(museuminfo);
             let museumNotJson = JSON.parse(museuminfo);
     
             for (var bundle2 in items)
@@ -94,12 +71,10 @@
                     let itemLowercase = item.toLowerCase();
                     if (museumNotJson[itemLowercase] == "YES"){
                         itemsCheckbox[itemLowercase] = true;
-                        console.log(itemLowercase);
                     }
                     else
                     {
                         itemsCheckbox[itemLowercase] = false;
-                        console.log(itemLowercase); 
                     }
                 }
             }
@@ -121,19 +96,31 @@
       <a href="/"><square class="title">Mistrian Curator</square></a>
       <img class="rightBorder" src={borderTitle} alt="Border Left">
     </div></center>
-        <center><h1>ARCHEOLOGY: {categoriesPercentages['archeology']}% COMPLETE</h1></center>
-        <div id="app" class="container">
+        
             {#if isDataLoaded}
+            <center><h1>{currCat.toUpperCase()}: {categoriesPercentages[currCat]}% COMPLETE</h1></center>
+        <div id="app" class="container">
                 {#each bundles as bundle}
-                    <div>
-                        <h1>{bundle}</h1>
-                        {#if items[bundle]?.length > 0}
-                            {#each items[bundle] as item}
-                                <div class="item"><label><input type="checkbox" bind:checked={itemsCheckbox[item.toLowerCase()]}>{item}</label></div>
+                <div>
+                    <h1>{bundle}</h1>
+                    {#if items[bundle]?.length > 0}
+                    {#each items[bundle] as item}
+                                <div>
+                                    <label style="font-size:1.25em;">
+                                        <input type="checkbox" bind:checked={itemsCheckbox[item.toLowerCase()]}>
+                                            {#await import(`../../../static/items/${item}.webp`) then { default: src }}
+                                                {#if itemsCheckbox[item.toLowerCase()]}
+                                                    <img {src} style="height: 1.25em" alt="{item}"/>
+                                                {:else}
+                                                    <img {src} style="height: 1.25em; -webkit-filter: grayscale(100%) brightness(0); filter: grayscale(100%) brightness(0);" alt="{item}"/>
+                                                {/if}
+                                            {/await}{item}
+                                    </label></div>
                             {/each}
                         {/if}
                     </div>
                 {/each}
+              </div>  
             {/if}
-        </div> 
+        
 </main>
