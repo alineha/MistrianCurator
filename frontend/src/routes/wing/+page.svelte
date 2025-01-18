@@ -12,7 +12,6 @@
     import GameLogo from "../../components/GameLogo/+GameLogo.svelte";
 
     export let bundles: string[] = [];
-    export let bundlesNumber: number = 0;
     export let items: { [id: string]: string[] } = {};
     export let itemsCheckbox: { [id: string]: boolean } = {};
     const storedValue =
@@ -51,10 +50,16 @@
         }
 
         bundles = await getBundles(currCat);
-        bundlesNumber = bundles.length - 1;
-        for (var bundle of bundles) {
-            let itemsOfBundle = await getBundleItems(currCat, bundle);
-            items[bundle] = itemsOfBundle;
+        const bundlesWithItems = (
+            await Promise.all(
+                bundles.map((bundle) => getBundleItems(currCat, bundle)),
+            )
+        ).map((items, index) => ({
+            id: bundles[index],
+            items,
+        }));
+        for (var bundle of bundlesWithItems) {
+            items[bundle.id] = bundle.items;
         }
         let museuminfo = localStorage.getItem("museum");
         if (museuminfo != null) {
