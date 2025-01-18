@@ -18,7 +18,7 @@ div.item {
   height: 1.25em;
 }
 
-.item-icon.selected {
+.item-icon.grayscale {
   -webkit-filter: grayscale(100%) brightness(0);
   filter: grayscale(100%) brightness(0);
 }

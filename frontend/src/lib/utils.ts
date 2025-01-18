@@ -1,7 +1,12 @@
+import { writable } from "svelte/store";
+
 export let categories = ['archeology', 'fish', 'flora', 'insects'];
-export let categoriesPercentages: { [id: string]: Number; } = {};
+export const categoriesPercentages = writable<{ [id: string]: number }>({});
 categories.forEach((category) => {
-    categoriesPercentages[category] = 0;
+    categoriesPercentages.update(current => ({
+        ...current,
+        [category]: 0
+    }));
 });
 
 export function getBaseUrl() {
@@ -23,7 +28,11 @@ export async function getSetPercentage(category: string, museumInfo: string) {
     
     if (response.ok) {
         const data = await response.json();
-        categoriesPercentages[category] = parseFloat(data)*100;
+        console.log(data);
+        categoriesPercentages.update(current => ({
+            ...current,
+            [category]: parseFloat(data) * 100
+        }));
         return data; // json
     }  
     

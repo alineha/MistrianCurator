@@ -6,7 +6,7 @@
         getBundles,
     } from "$lib/utils";
     import { onMount } from "svelte";
-    import { writable } from "svelte/store";
+    import { get, writable } from "svelte/store";
     import { page } from "$app/state";
     import { browser } from "$app/environment";
     import GameLogo from "../../components/GameLogo/+GameLogo.svelte";
@@ -33,16 +33,19 @@
                 }
             }
             localStorage.setItem("museum", JSON.stringify(itemsCheckboxString));
+            getSetPercentage(currCat, JSON.stringify(itemsCheckboxString));
         }
     }
 
     $: updateMuseumInfo(itemsCheckbox), itemsCheckbox;
+    $: console.log(categoriesPercentages), categoriesPercentages;
 
     let isDataLoaded = false;
     onMount(async () => {
         store.subscribe(updatePercentage);
 
         function updatePercentage() {
+            console.log("update");
             let museuminfo = localStorage.getItem("museum");
             if (museuminfo != null) {
                 getSetPercentage(currCat, museuminfo);
@@ -89,8 +92,9 @@
     {#if isDataLoaded}
         <center
             ><h1>
-                {currCat.toUpperCase()}: {categoriesPercentages[currCat]}%
-                COMPLETE
+                {currCat.toUpperCase()}: {Math.round(
+                    $categoriesPercentages[currCat],
+                )}% COMPLETE
             </h1></center
         >
         <div id="app" class="container">
@@ -110,7 +114,7 @@
                                     <img
                                         src={`/items/${item}.webp`}
                                         alt={item}
-                                        class={`item-icon ${itemsCheckbox[item.toLowerCase()] ? "selected" : ''}`}
+                                        class={`item-icon ${itemsCheckbox[item.toLowerCase()] ? "" : "grayscale"}`}
                                     />
                                     {item}
                                 </div>
