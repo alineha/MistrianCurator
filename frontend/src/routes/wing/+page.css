@@ -10,5 +10,15 @@
 
 div.item {
   background-color: rgba(255, 255, 255, 0.407);
-  backdrop-filter: blur(2px);
+  /* Causes severe lag during scrolling - to be investigated */
+  /* backdrop-filter: blur(2px); */
+}
+
+.item-icon {
+  height: 1.25em;
+}
+
+.item-icon.selected {
+  -webkit-filter: grayscale(100%) brightness(0);
+  filter: grayscale(100%) brightness(0);
 }

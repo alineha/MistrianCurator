@@ -110,11 +110,7 @@
                                     <img
                                         src={`/items/${item}.webp`}
                                         alt={item}
-                                        style="height: 1.25em; {itemsCheckbox[
-                                            item.toLowerCase()
-                                        ]
-                                            ? ''
-                                            : '-webkit-filter: grayscale(100%) brightness(0); filter: grayscale(100%) brightness(0);'}"
+                                        class={`item-icon ${itemsCheckbox[item.toLowerCase()] ? "selected" : ''}`}
                                     />
                                     {item}
                                 </div>
