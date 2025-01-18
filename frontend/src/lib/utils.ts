@@ -6,7 +6,7 @@ categories.forEach((category) => {
 
 export async function getSetPercentage(category: string, museumInfo: string) {
     const response = await fetch(
-        `http://127.0.0.1:8000/wing/percentage?wing=${category}`,
+        `https://dominoisy.pythonanywhere.com/wing/percentage?wing=${category}`,
         {
             method: 'POST',
             body: museumInfo
@@ -24,7 +24,7 @@ export async function getSetPercentage(category: string, museumInfo: string) {
 
 export async function getBundles(category: string) {
     const response = await fetch(
-      `http://127.0.0.1:8000/wing/bundles?wing=${category}`,
+      `https://dominoisy.pythonanywhere.com/wing/bundles?wing=${category}`,
       {
           method: 'GET'
       }
@@ -40,7 +40,7 @@ export async function getBundles(category: string) {
 
 export async function getBundleItems(category: string, bundle: string) {
     const response = await fetch(
-      `http://127.0.0.1:8000/wing/bundles/items?wing=${category}&bundle=${bundle}`,
+      `https://dominoisy.pythonanywhere.com/wing/bundles/items?wing=${category}&bundle=${bundle}`,
       {
           method: 'GET'
       }

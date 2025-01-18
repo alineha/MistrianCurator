@@ -44,7 +44,7 @@
 
     async function getSetPercentage(category: string, museumInfo: string) {
       const response = await fetch(
-        `http://127.0.0.1:8000/wing/percentage?wing=${category}`,
+        `https://dominoisy.pythonanywhere.com/wing/percentage?wing=${category}`,
         {
             method: 'POST',
             body: JSON.stringify(museumInfo)
@@ -86,7 +86,7 @@
         const formData = new FormData();
         formData.append('gamedata', files[0]);
         
-        const response = await fetch('http://localhost:8000/import', {
+        const response = await fetch('https://dominoisy.pythonanywhere.com/import', {
             method: 'POST',
             body: formData
         });

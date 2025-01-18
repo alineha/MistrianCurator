@@ -1,0 +1,4 @@
+runtime: python310
+
+env_variables:
+    APPENGINE_URL: https://mistrian-curator.ue.r.appspot.com]
