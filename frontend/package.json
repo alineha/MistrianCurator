@@ -24,6 +24,7 @@
 	},
 	"dependencies": {
 		"axios": "^1.7.9",
+		"node": "20.9.0",
 		"svelte-persisted-store": "^0.12.0"
 	}
 }
