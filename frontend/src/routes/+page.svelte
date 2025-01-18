@@ -74,12 +74,14 @@
     });
   
     onMount(async () => {
-      if (museum != null){
-      await getSetPercentage(categories[0], museum);
-      await getSetPercentage(categories[1], museum);
-      await getSetPercentage(categories[2], museum);
-      await getSetPercentage(categories[3], museum);
-    }
+      if (museum != null) {
+        await Promise.all(categories.map((category) => getSetPercentage(category, museum)))
+      } else {
+        categories.forEach((category) => {
+          categoriesPercentages[category] = 0;
+          swapDisplay(`${category}perc`, `${category}circle`)
+        });
+      }
 	  });
   
   async function upload() {
