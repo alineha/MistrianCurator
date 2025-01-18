@@ -180,4 +180,3 @@
       <div style="padding-top: 1em"><button onclick={clear}>Clear data</button></div>
     </center>
   </main>
-  

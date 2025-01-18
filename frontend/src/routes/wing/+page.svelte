@@ -105,8 +105,8 @@
                     <h1>{bundle}</h1>
                     {#if items[bundle]?.length > 0}
                     {#each items[bundle] as item}
-                                <div>
-                                    <label style="font-size:1.25em;">
+                    <label style="font-size:1.25em;">
+                                        <div class="item">
                                         <input type="checkbox" bind:checked={itemsCheckbox[item.toLowerCase()]}>
                                             {#await import(`../../../static/items/${item}.webp`) then { default: src }}
                                                 {#if itemsCheckbox[item.toLowerCase()]}
@@ -115,7 +115,8 @@
                                                     <img {src} style="height: 1.25em; -webkit-filter: grayscale(100%) brightness(0); filter: grayscale(100%) brightness(0);" alt="{item}"/>
                                                 {/if}
                                             {/await}{item}
-                                    </label></div>
+                                        </div>
+                                        </label>
                             {/each}
                         {/if}
                     </div>
