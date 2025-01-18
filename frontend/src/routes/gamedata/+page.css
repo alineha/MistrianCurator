@@ -4,8 +4,8 @@
   font-weight: 500;
   src: url('/static/fonts/ProggyClean.woff2');
   src: local(''), url('/static/fonts/ProggyClean.woff2') format('woff2'),
-                  url('/static/fonts/ProggyClean.ttf') format('truetype'),
-                  url('/static/fonts/ProggyClean.woff') format('woff'),
+    url('/static/fonts/ProggyClean.ttf') format('truetype'),
+    url('/static/fonts/ProggyClean.woff') format('woff'),
 }
 
 a {
@@ -13,6 +13,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #767bdd;
 }
@@ -22,16 +23,18 @@ a:hover {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
 }
 
 h2.wing {
-  display:grid;
+  display: grid;
   text-align: center;
   margin-top: 0;
   grid-column: 1;
@@ -39,7 +42,7 @@ h2.wing {
 }
 
 h2 {
-  width:50%;
+  width: 50%;
 }
 
 square.title {
@@ -52,15 +55,18 @@ square.title {
   padding: .3em;
   padding-left: .5em;
   padding-right: .4em;
-  }
-div.title{
+}
+
+div.title {
   padding: 1.5em;
   margin-bottom: 1.5em;
 }
+
 img.rightBorder {
   transform: scalex(-100%) scale(130%);
   margin-left: -2px;
 }
+
 img.leftBorder {
   transform: scale(130%);
   margin-right: -2px;
