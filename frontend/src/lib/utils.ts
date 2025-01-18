@@ -4,9 +4,17 @@ categories.forEach((category) => {
     categoriesPercentages[category] = 0;
 });
 
+export function getBaseUrl() {
+    if (import.meta.env.MODE === 'development') {
+        return 'http://localhost:8000';
+    } else {
+        return 'https://dominoisy.pythonanywhere.com';
+    }
+}
+
 export async function getSetPercentage(category: string, museumInfo: string) {
     const response = await fetch(
-        `https://dominoisy.pythonanywhere.com/wing/percentage?wing=${category}`,
+        `${getBaseUrl()}/wing/percentage?wing=${category}`,
         {
             method: 'POST',
             body: museumInfo
@@ -24,7 +32,7 @@ export async function getSetPercentage(category: string, museumInfo: string) {
 
 export async function getBundles(category: string) {
     const response = await fetch(
-      `https://dominoisy.pythonanywhere.com/wing/bundles?wing=${category}`,
+      `${getBaseUrl()}/wing/bundles?wing=${category}`,
       {
           method: 'GET'
       }
@@ -40,7 +48,7 @@ export async function getBundles(category: string) {
 
 export async function getBundleItems(category: string, bundle: string) {
     const response = await fetch(
-      `https://dominoisy.pythonanywhere.com/wing/bundles/items?wing=${category}&bundle=${bundle}`,
+      `${getBaseUrl()}/wing/bundles/items?wing=${category}&bundle=${bundle}`,
       {
           method: 'GET'
       }

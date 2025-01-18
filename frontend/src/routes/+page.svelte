@@ -12,8 +12,8 @@
     import {Circle} from 'svelte-loading-spinners'; 
     import type { Writable } from 'svelte/store';
     import { writable, get } from 'svelte/store'
+    import { getBaseUrl } from '$lib/utils';
 
-    
     function swapDisplay(percTextId: string, circleDivId: string) {
       var txt = document.getElementById(percTextId);
       var div = document.getElementById(circleDivId);
@@ -44,7 +44,7 @@
 
     async function getSetPercentage(category: string, museumInfo: string) {
       const response = await fetch(
-        `https://dominoisy.pythonanywhere.com/wing/percentage?wing=${category}`,
+        `${getBaseUrl()}/wing/percentage?wing=${category}`,
         {
             method: 'POST',
             body: JSON.stringify(museumInfo)
@@ -86,7 +86,7 @@
         const formData = new FormData();
         formData.append('gamedata', files[0]);
         
-        const response = await fetch('https://dominoisy.pythonanywhere.com/import', {
+        const response = await fetch(`${getBaseUrl()}/import`, {
             method: 'POST',
             body: formData
         });
