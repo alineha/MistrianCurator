@@ -1,14 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import archeologyLogo from "../../static/archeology.webp";
-  import fishLogo from "../../static/fish.webp";
-  import floraLogo from "../../static/flora.webp";
-  import insectsLogo from "../../static/insects.webp";
-  import borderTitle from "../../static/titleborder.png";
   import { Circle } from "svelte-loading-spinners";
   import type { Writable } from "svelte/store";
   import { writable, get } from "svelte/store";
   import { getBaseUrl } from "$lib/utils";
+  import GameLogo from "../components/GameLogo/+GameLogo.svelte";
 
   function swapDisplay(percTextId: string, circleDivId: string) {
     var txt = document.getElementById(percTextId);
@@ -112,13 +108,7 @@
 </script>
 
 <main>
-  <center
-    ><div class="title">
-      <img class="leftBorder" src={borderTitle} alt="Border Left" />
-      <a href="/"><square class="title">Mistrian Curator</square></a>
-      <img class="rightBorder" src={borderTitle} alt="Border Left" />
-    </div></center
-  >
+  <GameLogo />
   <center>
     <table class="museum">
       <tbody>
@@ -126,7 +116,7 @@
           <td>
             <a href="/wing?which=archeology">
               <img
-                src={archeologyLogo}
+                src='/archeology.webp'
                 class="logo archeo"
                 alt="Archeology Wing"
               />
@@ -146,7 +136,7 @@
           </td>
           <td>
             <a href="/wing?which=fish">
-              <img src={fishLogo} class="logo fish" alt="Fish Wing" />
+              <img src='/fish.webp' class="logo fish" alt="Fish Wing" />
             </a>
             <div class="container_row">
               <h2 id="fishperc" class="wing" style="display:none">
@@ -161,7 +151,7 @@
         <tr>
           <td>
             <a href="/wing?which=flora">
-              <img src={floraLogo} class="logo flora" alt="Flora Wing" />
+              <img src='/flora.webp' class="logo flora" alt="Flora Wing" />
             </a>
             <div class="container_row">
               <h2 id="floraperc" class="wing" style="display:none">
@@ -174,7 +164,7 @@
           </td>
           <td>
             <a href="/wing?which=insects">
-              <img src={insectsLogo} class="logo insects" alt="Insects Wing" />
+              <img src='/insects.webp' class="logo insects" alt="Insects Wing" />
             </a>
             <div class="container_row">
               <h2 id="insectsperc" class="wing" style="display:none">

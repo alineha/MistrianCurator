@@ -1,15 +1,10 @@
 <script lang="ts">
-  import borderTitle from "../../../static/titleborder.png";
+  import GameLogo from "../../components/GameLogo/+GameLogo.svelte";
 </script>
 
 <main>
-  <center
-    ><div class="title">
-      <img class="leftBorder" src={borderTitle} alt="Border Left" />
-      <a href="/"><square class="title">Mistrian Curator</square></a>
-      <img class="rightBorder" src={borderTitle} alt="Border Left" />
-    </div></center
-  >
+  <GameLogo />
+
   <center>
     <h1><u><b>What is a gamedata file?</b></u></h1>
     <h2>

@@ -1,5 +1,4 @@
 <script lang="ts">
-    import borderTitle from "../../../static/titleborder.png";
     import {
         categoriesPercentages,
         getSetPercentage,
@@ -10,6 +9,7 @@
     import { writable } from "svelte/store";
     import { page } from "$app/state";
     import { browser } from "$app/environment";
+    import GameLogo from "../../components/GameLogo/+GameLogo.svelte";
 
     export let bundles: string[] = [];
     export let bundlesNumber: number = 0;
@@ -79,13 +79,7 @@
 </script>
 
 <main>
-    <center
-        ><div class="title">
-            <img class="leftBorder" src={borderTitle} alt="Border Left" />
-            <a href="/"><square class="title">Mistrian Curator</square></a>
-            <img class="rightBorder" src={borderTitle} alt="Border Left" />
-        </div></center
-    >
+    <GameLogo />
 
     {#if isDataLoaded}
         <center
