@@ -28,7 +28,6 @@ export async function getSetPercentage(category: string, museumInfo: string) {
     
     if (response.ok) {
         const data = await response.json();
-        console.log(data);
         categoriesPercentages.update(current => ({
             ...current,
             [category]: parseFloat(data) * 100

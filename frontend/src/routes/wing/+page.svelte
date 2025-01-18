@@ -38,14 +38,12 @@
     }
 
     $: updateMuseumInfo(itemsCheckbox), itemsCheckbox;
-    $: console.log(categoriesPercentages), categoriesPercentages;
 
     let isDataLoaded = false;
     onMount(async () => {
         store.subscribe(updatePercentage);
 
         function updatePercentage() {
-            console.log("update");
             let museuminfo = localStorage.getItem("museum");
             if (museuminfo != null) {
                 getSetPercentage(currCat, museuminfo);
